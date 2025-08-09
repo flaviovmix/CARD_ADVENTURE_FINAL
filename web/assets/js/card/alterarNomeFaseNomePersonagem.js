@@ -1,5 +1,6 @@
 const tituloTexto = document.querySelectorAll('#area-titulo-da-fase'); // Seleciona todos os elementos com a ID 'area-titulo-da-fase'
-const nomePadrao = 'VIDEL SATAN';
+const nomePadrao = "NOME";
+
 let timeoutVoltarPadrao = null;
 
 function trocarTextoComFade(novoTexto, elementoTitulo) {

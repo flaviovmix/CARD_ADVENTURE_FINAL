@@ -12,8 +12,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/assets/css/card/normalize.css</file>
+            <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/assets/js/card/alterarNomeFaseNomePersonagem.js</file>
             <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/index.jsp</file>
-            <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/pegar.html</file>
+            <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/assets/js/script.js</file>
+            <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/assets/js/card/mostrarAreaInfoPersonagem.js</file>
+            <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/assets/js/card/mostrarMenuLateralCard.js</file>
+            <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/assets/css/menu/responsividade.css</file>
         </group>
     </open-files>
 </project-private>
