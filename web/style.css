@@ -1,0 +1,31 @@
+:root {
+    --branco: #FFFFFF;
+    --preto: #000000; 
+    --cinza: #C0C0C0;
+    --cor-principal: #ff7b00;
+    --cor-secundaria: #00FFFF;
+    --cor-terciaria: #FF00FF;
+}
+
+body {
+    background-color: var(--branco);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link, .dropdown-item {
+    margin-top: .3rem;
+    font-size: .90rem;
+    color: rgb(46, 46, 46);
+}
+
+.img_logo {
+    height: 2rem;
+    margin-bottom: 0rem;
+}
+.nav-link:hover {
+    text-decoration: underline;
+}
