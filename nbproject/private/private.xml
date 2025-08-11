@@ -11,14 +11,6 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/index.jsp</file>
-            <file>file:/C:/src/CARD_ADVENTURE_FINAL/src/java/card/CardDAO.java</file>
-            <file>file:/C:/src/CARD_ADVENTURE_FINAL/src/java/Atributos/AtributosBean.java</file>
-            <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/assets/css/card/card.css</file>
-            <file>file:/C:/src/CARD_ADVENTURE_FINAL/src/java/card/CardBean.java</file>
-            <file>file:/C:/src/CARD_ADVENTURE_FINAL/web/cadastroCardAtritutos.jsp</file>
-            <file>file:/C:/src/CARD_ADVENTURE_FINAL/src/java/Atributos/AtributosDAO.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
