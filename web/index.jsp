@@ -187,8 +187,8 @@
                 <img class="img-principal" src="./assets/pixel_ai/<%= card.getImg() %>" alt="imagem da personagem ${i}" />
 
                 <!-- Título agora só com classes -->
-                <div class="area-titulo-da-fase mostrar" data-nome="<%= card.getNome() %>">
-                  <span class="area-titulo-texto"><%= card.getNome() %></span>
+                <div class="area-titulo-da-fase mostrar" data-nome="<%= card.getTitulo() %>">
+                  <span class="area-titulo-texto"><%= card.getTitulo() %></span>
                 </div>
               </div>
 

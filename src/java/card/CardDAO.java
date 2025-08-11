@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardDAO {
-private ConexaoBanco dataBase;
+private ConexaoBanco conexaoBanco;
 
     public CardDAO() {
-        dataBase = new ConexaoBanco("CardAdventure");
-        dataBase.abrirConexao();
+        conexaoBanco = new ConexaoBanco("CardAdventure");
+        conexaoBanco.abrirConexao();
     }
     
     public List<CardBean> listarCards() {
@@ -21,21 +21,21 @@ private ConexaoBanco dataBase;
             "SELECT c.id_card, " +
             "       COALESCE((SELECT a.valor " +
             "                  FROM atributos a " +
-            "                 WHERE a.fk_card = c.id_card AND a.chave ILIKE 'nome' " +
+            "                 WHERE a.fk_card = c.id_card AND a.chave ILIKE 'titulo' " +
             "                 ORDER BY a.id_atributo DESC " +
-            "                 LIMIT 1), c.nome) AS nome, " + 
+            "                 LIMIT 1), c.titulo) AS titulo, " + 
             "       c.descricao, " +
             "       COALESCE((SELECT a.valor " +
             "                  FROM atributos a " +
             "                 WHERE a.fk_card = c.id_card AND a.chave ILIKE 'obs' " +
             "                 ORDER BY a.id_atributo DESC " +
-            "                 LIMIT 1), c.nome) AS obs, " + 
+            "                 LIMIT 1), c.titulo) AS obs, " + 
             "       c.descricao, " +
             "       COALESCE((SELECT a.valor " +
             "                  FROM atributos a " +
             "                 WHERE a.fk_card = c.id_card AND a.chave ILIKE 'bandeira' " +
             "                 ORDER BY a.id_atributo DESC " +
-            "                 LIMIT 1), c.nome) AS bandeira, " + 
+            "                 LIMIT 1), c.titulo) AS bandeira, " + 
             "       c.descricao, " +
             "       (SELECT a.valor " +
             "          FROM atributos a " +
@@ -47,13 +47,13 @@ private ConexaoBanco dataBase;
 
 
 
-        try (PreparedStatement ps = dataBase.getConexao().prepareStatement(sql);
+        try (PreparedStatement ps = conexaoBanco.getConexao().prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 CardBean card = new CardBean();
                 card.setId_card(rs.getInt("id_card"));
-                card.setNome(rs.getString("nome"));
+                card.setTitulo(rs.getString("titulo"));
                 card.setDescricao(rs.getString("descricao"));
                 card.setObs(rs.getString("obs"));
                 card.setBandeira(rs.getString("bandeira"));
@@ -66,8 +66,26 @@ private ConexaoBanco dataBase;
         return lista;
     }
 
+    public void adicionarTarefa(CardBean card) {
+    String sql = "INSERT INTO cards (nome, descricao) " +
+                 "VALUES (?, ?, ) RETURNING id_card;";
+
+        try (PreparedStatement ps = conexaoBanco.getConexao().prepareStatement(sql);
+             ) {
+            ps.setString(1, card.getTitulo());
+            ps.setString(2, card.getDescricao());
+
+            try (ResultSet rs = ps.executeQuery()) { // <- usa executeQuery por causa do RETURNING
+                if (rs.next()) {
+                    card.setId_card(rs.getInt("id_card"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     
     public void fecharConexao() {
-        dataBase.fecharConexao();
+        conexaoBanco.fecharConexao();
     }        
 }

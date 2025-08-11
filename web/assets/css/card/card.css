@@ -247,10 +247,11 @@
 
 .container-xl .card .area-link-fases .icone {
     width: auto; 
-    height: 75px;
+    height: 67px;
     aspect-ratio: 1 / 2;
     object-fit: contain;
     cursor: pointer;
     transition: transform 0.2s ease;
+    filter: brightness(0) saturate(100%);
 }
 
