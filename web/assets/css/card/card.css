@@ -130,17 +130,11 @@
 
 .container-xl .card .conteudo-card .area-titulo-da-fase {
     position: relative; /* de relative para absolute */
-    bottom: 40px; /* ou o valor que quiser */
-    left: -260px;
+    bottom: 35px; /* ou o valor que quiser */
     width: 75%;
-    background: linear-gradient(
-        to right,
-        rgba(102, 51, 153, 0.9) 0%,
-        rgba(102, 51, 153, 0.7) 10%,
-        rgba(102, 51, 153, 0) 50%
-    );
+    background: linear-gradient(to right, #adb5bd 0%, rgba(255, 255, 255, 0.15) 10%, rgba(102, 51, 153, 0) 50%);
     color: white;
-    padding: 5px 10px;
+    padding: 3px 10px;
     border-radius: 5px;
     font-size: 1rem;
     font-weight: 600;

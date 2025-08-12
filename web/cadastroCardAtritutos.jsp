@@ -20,13 +20,13 @@
     <meta charset="UTF-8" />
     <title>Cadastrar Card</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link rel="stylesheet" href="./assets/css/card/card.css">
-<link rel="stylesheet" href="./assets/css/card/area-info-personagem.css">
-<link rel="stylesheet" href="./assets/css/card/normalize.css">
-<link rel="stylesheet" href="./assets/css/card/responsividade.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./assets/css/card/card.css">
+    <link rel="stylesheet" href="./assets/css/card/area-info-personagem.css">
+    <link rel="stylesheet" href="./assets/css/card/normalize.css">
+    <link rel="stylesheet" href="./assets/css/card/responsividade.css">
 
     <style>
       .table-attrs td input { width: 100%; }
@@ -132,7 +132,11 @@
                         <div class="tabela">
                           <table>
                             <tbody>
-                              <tr class="obs"><td colspan="2" class="obs"></td></tr>
+                                <tr>
+                                    <td class="chave"><strong>Chave:</strong></td>
+                                    <td>valor</td>
+                                </tr>
+                                <tr class="obs"><td colspan="2" class="obs">Obs vai aqui</td></tr>
                             </tbody>
                           </table>
                         </div>
@@ -164,11 +168,13 @@
           <!-- Coluna direita - atributos -->
           <div class="col-lg-6">
             <form action="salvarAtributos.jsp" method="get" class="needs-validation" novalidate>
-                <input type="hidden" name="id_card" value="">
+                <input type="hidden" name="id_card" value="<%= id_card %>">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <h5 class="m-0">Atributos</h5>
                     <div>
-                      <button type="button" id="btnAddLinha" class="btn btn-sm btn-primary">+ Adicionar atributo</button>
+<button type="button" id="btnAddLinha" class="btn btn-sm btn-primary" data-n="1">+ Adicionar atributo</button>
+<button type="button" id="btnAdd8" class="btn btn-sm btn-secondary ms-2" data-n="8">+ Adicionar 8</button>
+
                     </div>
                 </div>
 
@@ -205,7 +211,7 @@
                           </td>
                           <td>
                             <input type="text" class="form-control" name="attrValor[]"
-                                   placeholder="ex.: peach.png" required value="peach.png" />
+                                   placeholder="ex.: modelo.png" required value="modelo.png" />
                           </td>
                           <td class="text-center">
                             <button type="button" class="btn btn-sm btn-outline-secondary" disabled>Remover</button>
@@ -220,7 +226,7 @@
                           </td>
                           <td>
                             <input type="text" class="form-control" name="attrValor[]"
-                                   placeholder="ex.: brasil.png" required value="brasil.png" />
+                                   placeholder="ex.: bandeira.png" required value="bandeira.png" />
                           </td>
                           <td class="text-center">
                             <button type="button" class="btn btn-sm btn-outline-secondary" disabled>Remover</button>
@@ -235,7 +241,7 @@
                           </td>
                           <td>
                             <textarea class="form-control" name="attrValor[]" rows="1" maxlength="90"
-                                      placeholder="ex.: Vive no mundo dos cogumelos" required>Vive no mundo dos cogumelos</textarea>
+                                      placeholder="ex.: Observacao vai aqui" required>Observacao vai aqui</textarea>
                           </td>
                           <td class="text-center">
                             <button type="button" class="btn btn-sm btn-outline-secondary" disabled>Remover</button>
@@ -288,5 +294,8 @@
       <script src="./assets/js/card/mostrarAreaInfoPersonagem.js"></script>
       <script src="./assets/js/card/alterarNomeFase.js"></script>
       <script src="./assets/js/card/mostrarMenuLateralCard.js"></script>
+      <script src="./assets/js/card/preencherPreviaCard.js"></script> 
+      
+      
   </body>
 </html>

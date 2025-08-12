@@ -26,5 +26,5 @@
         dao.fecharConexao();
     }
 
-    response.sendRedirect("cadastroCardAtritutos.jsp?id_card=" + idCard + "&novoOuEditar=1");
+    response.sendRedirect("index.jsp");
 %>
