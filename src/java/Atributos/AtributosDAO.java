@@ -43,7 +43,21 @@ public List<AtributosBean> listarAtributosPorCard(int id_card) {
     return lista;
 }
 
-        public void fecharConexao() {
-            dataBase.fecharConexao();
-        }      
+    public void adicionarAtributos(AtributosBean atributo) {
+        String sql = "INSERT INTO atributos (fk_card, chave, valor) VALUES (?, ?, ?)";
+        try (PreparedStatement ps = dataBase.getConexao().prepareStatement(sql)) {
+            ps.setInt(1, atributo.getFk_card());
+            ps.setString(2, atributo.getChave());
+            ps.setString(3, atributo.getValor());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void fecharConexao() {
+        dataBase.fecharConexao();
+    }      
 }

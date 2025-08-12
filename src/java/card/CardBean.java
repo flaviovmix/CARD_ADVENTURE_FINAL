@@ -3,6 +3,7 @@ package card;
 public class CardBean {
     private int id_card;
     private String titulo;
+    private String nome;
     private String descricao;
     private String obs;
     private String bandeira;
@@ -22,6 +23,13 @@ public class CardBean {
         this.titulo = titulo;
     }
 
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
     public String getDescricao() {
         return descricao;
     }

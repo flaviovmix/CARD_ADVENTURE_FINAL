@@ -5,11 +5,13 @@
 <%@page import="card.CardBean"%>
 <%@page import="card.CardDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%
     CardDAO cardDAO = new CardDAO();
     List<CardBean> cards = cardDAO.listarCards();
     cardDAO.fecharConexao();
 %>
+
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -17,7 +19,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     
-    <!-- links de terceiros -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/card/card.css">
     <link rel="stylesheet" href="./assets/css/card/area-info-personagem.css">
@@ -114,14 +115,14 @@
                 </div>
 
                 <div class="controle-card">
-                  <a href="#"><img class="svg" src="./assets/svg/apagar.svg" alt=""></a>
-                  <a href="#"><img class="svg" src="./assets/svg/compartilhar.svg" alt=""></a>
-                  <a href="#"><img class="svg" src="./assets/svg/editar.svg" alt=""></a>
-                  <a href="#"><img class="svg" src="./assets/svg/baixar.svg" alt=""></a>
+                    <a href="#"><img class="svg" src="./assets/svg/apagar.svg" alt=""></a>
+                    <a href="#"><img class="svg" src="./assets/svg/compartilhar.svg" alt=""></a>
+                    <a href="#"><img class="svg" src="./assets/svg/editar.svg" alt=""></a>
+                    <a href="#"><img class="svg" src="./assets/svg/baixar.svg" alt=""></a>
                 </div>
 
                 <div class="controle-card">
-                  <a href="#"><img class="svg lixeira" src="./assets/svg/lixeira.svg" alt=""></a>
+                  <a href="deletarCard.jsp?id_card=<%= card.getId_card() %>"><img class="svg lixeira" src="./assets/svg/lixeira.svg" alt=""></a>
                 </div>
               </div>
 
@@ -187,8 +188,8 @@
                 <img class="img-principal" src="./assets/pixel_ai/<%= card.getImg() %>" alt="imagem da personagem ${i}" />
 
                 <!-- Título agora só com classes -->
-                <div class="area-titulo-da-fase mostrar" data-nome="<%= card.getTitulo() %>">
-                  <span class="area-titulo-texto"><%= card.getTitulo() %></span>
+                <div class="area-titulo-da-fase mostrar" data-nome="<%= card.getNome() %>">
+                  <span class="area-titulo-texto"><%= card.getNome() %></span>
                 </div>
               </div>
 
