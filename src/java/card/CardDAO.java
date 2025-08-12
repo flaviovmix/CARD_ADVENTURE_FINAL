@@ -112,19 +112,19 @@ private ConexaoBanco conexaoBanco;
     }
     
     public void alterarCard(CardBean card) {
-    String sql = "INSERT INTO cards (titulo, descricao) " +
-                 "VALUES (?, ?) RETURNING id_card;";
+        
+        StringBuilder sql = new StringBuilder();
+        sql.append("UPDATE cards SET ")
+           .append("titulo = ?, ")
+           .append("descricao = ? ")
+           .append("WHERE id_card = ?");
 
-        try (PreparedStatement ps = conexaoBanco.getConexao().prepareStatement(sql);
-             ) {
+        try (PreparedStatement ps = conexaoBanco .getConexao().prepareStatement(sql.toString())) {
             ps.setString(1, card.getTitulo());
             ps.setString(2, card.getDescricao());
+            ps.setInt(3, card.getId_card());
 
-            try (ResultSet rs = ps.executeQuery()) { // <- usa executeQuery por causa do RETURNING
-                if (rs.next()) {
-                    card.setId_card(rs.getInt("id_card"));
-                }
-            }
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

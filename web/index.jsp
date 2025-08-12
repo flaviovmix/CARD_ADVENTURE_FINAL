@@ -117,7 +117,7 @@
                 <div class="controle-card">
                     <a href="#"><img class="svg" src="./assets/svg/apagar.svg" alt=""></a>
                     <a href="#"><img class="svg" src="./assets/svg/compartilhar.svg" alt=""></a>
-                    <a href="#"><img class="svg" src="./assets/svg/editar.svg" alt=""></a>
+                    <a href="cadastroCardAtritutos.jsp?id_card=<%= card.getId_card() %>"><img class="svg" src="./assets/svg/editar.svg" alt=""></a>
                     <a href="#"><img class="svg" src="./assets/svg/baixar.svg" alt=""></a>
                 </div>
 

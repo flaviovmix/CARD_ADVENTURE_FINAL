@@ -28,23 +28,42 @@
     <link rel="stylesheet" href="./assets/css/card/normalize.css">
     <link rel="stylesheet" href="./assets/css/card/responsividade.css">
 
-    <style>
-      .table-attrs td input { width: 100%; }
-      .required::after { content: " *"; color: #dc3545; }
-    </style>
+<style>
+    body {
+      zoom: 90%;
+    }
+    .table-attrs td input {
+      width: 100%;
+    }
+    .required::after {
+      content: " *";
+      color: #dc3545;
+    }
+
+    .atributos {
+        margin-top: -50px;
+    }
+
+    .opaco {
+        opacity: 0.4;
+        pointer-events: none;
+        user-select: none;
+        filter: grayscale(100%);
+    }
+</style>
   </head>
   <body class="bg-light">
       
     <div class="container py-4 mt-1">
-      <h1 class="mb-4 mt-0">Cadastrar Card</h1>
+      <h1 class="mb-4 mt-0">Novo Card</h1>
 
      
         <div class="row g-4">
           
-          <div class="col-lg-6">
-            <form action="salvarCard.jsp" method="get" class="needs-validation" novalidate>
+          <div class="col-lg-6 ">
+            <form action="salvarCard.jsp" method="get" class="needs-validation " novalidate>
               <div class="mb-3">
-                  <input type="hidden" name="id_card" value="0">
+                <input type="hidden" name="id_card" value="<%=  Utilidades.nullTrim(card.getId_card()) %>">
                 <label class="form-label required" for="nome">Nome</label>
                 <input type="text" class="form-control" id="nome" name="titulo" required value="<%=  Utilidades.nullTrim(card.getTitulo()) %>"/>
                 <div class="invalid-feedback">Informe o nome.</div>
@@ -54,15 +73,21 @@
                 <label class="form-label" for="descricao">Descrição</label>
                 <textarea class="form-control" id="descricao" name="descricao" rows="1"><%=  Utilidades.nullTrim(card.getDescricao()) %></textarea>
               </div>
-              <div class="mt-4">
+              
+              <div class="mt-4 text-center">
                 <button type="submit" class="btn btn-success w-25 me-3">Salvar</button>
                 <a href="index.jsp" class="btn btn-outline-secondary w-25">Cancelar</a>
               </div>
+              
+              <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-primary w-25 me-3">Editar</button>
+              </div>
+              
             </form>
               
               
               
-            <div class="container-xl">
+            <div class="container-xl opaco">
                 <div class="card card-selecionado">
 
                     <div class="menu-lateral-card">
@@ -167,14 +192,13 @@
 
           <!-- Coluna direita - atributos -->
           <div class="col-lg-6">
-            <form action="salvarAtributos.jsp" method="get" class="needs-validation" novalidate>
+            <form action="salvarAtributos.jsp" method="get" class="needs-validation opaco" novalidate>
                 <input type="hidden" name="id_card" value="<%= id_card %>">
-                <div class="d-flex align-items-center justify-content-between mb-2">
+                <div class="d-flex align-items-center justify-content-between mb-2 atributos">
                     <h5 class="m-0">Atributos</h5>
                     <div>
-<button type="button" id="btnAddLinha" class="btn btn-sm btn-primary" data-n="1">+ Adicionar atributo</button>
-<button type="button" id="btnAdd8" class="btn btn-sm btn-secondary ms-2" data-n="8">+ Adicionar 8</button>
-
+                        <button type="button" id="btnAddLinha" class="btn btn-sm btn-primary" data-n="1">+ Adicionar atributo</button>
+                        <button type="button" id="btnAdd8" class="btn btn-sm btn-secondary ms-2" data-n="8">+ Adicionar 8</button>
                     </div>
                 </div>
 
@@ -254,9 +278,7 @@
                     <div class="mt-4 text-center">
                       <button type="submit" class="btn btn-success mb-3 w-25">Salvar</button>
                     </div>
-
                 </div>
-
 
                 <p class="text-muted small">
                     Dica: (<code>Nome personagem, Img, Bandeira e Obs</code>),
@@ -264,12 +286,11 @@
                     Pelo design do card, é possível adicionar no máximo <strong>8 novos atributos</strong>, 
                     e o campo <strong>Valor</strong> aceita até <strong>18 caracteres</strong>, o atrituto <strong>Obs</strong> possui um limite de <strong>90 caractere</strong>.
                 </p>
+
             </form>
           </div>
 
         </div>
-
-
     </div>
 
     <!-- Template para nova linha -->
@@ -287,8 +308,7 @@
       </tr>
     </template>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
       <script src="./assets/js/card/preencherAtributos.js" ></script>
       <script src="./assets/js/card/mostrarAreaInfoPersonagem.js"></script>
