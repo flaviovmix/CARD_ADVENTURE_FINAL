@@ -8,28 +8,31 @@
     const tbodyForm = document.getElementById("tbodyAtributos");
 
     // Elementos do card (os estáticos)
-    const elTitulo    = document.querySelector(".area-titulo-texto");
-    const elImg       = document.querySelector(".img-principal");
-    const elFace      = document.querySelector(".face");
-    const elBandeira  = document.querySelector(".bandeira");
+    const elTitulo      = document.querySelector(".area-titulo-texto");
+    const elImg         = document.querySelector(".img-principal");
+    const elFace        = document.querySelector(".face");
+    const elBandeira    = document.querySelector(".bandeira");
     const elTabelaTbody = document.querySelector(".tabela table tbody");
 
-    const PATH_IMG = "./assets/pixel_ai/";
-    const FALLBACK_IMG = PATH_IMG + "modelo.png";
-    const FALLBACK_BANDEIRA = PATH_IMG + "bandeira.png";
-    const FALLBACK_NOME = "NOME";
+    const PATH_IMG           = "./assets/pixel_ai/";
+    const FALLBACK_IMG       = PATH_IMG + "modelo.png";
+    const FALLBACK_BANDEIRA  = PATH_IMG + "bandeira.png";
+    const FALLBACK_NOME      = "NOME";
 
-    const PADROES_FIXOS = ["nome", "img", "bandeira", "obs"];
-    const CHAVES_FACE_POSSIVEIS = ["face", "avatar", "imgface"];
+    const PADROES_FIXOS          = ["nome", "img", "bandeira", "obs"];
+    const CHAVES_FACE_POSSIVEIS  = ["face", "avatar", "imgface"];
 
-    // Util: encontra o input/textarea de valor pela chave
+    // Agora também considera <select>
+    const SELECTOR_VALOR = 'input[name="attrValor[]"], textarea[name="attrValor[]"], select[name="attrValor[]"]';
+
+    // Util: encontra o input/textarea/select de valor pela chave
     function getValorElPorChave(chaveDesejada) {
       const rows = tbodyForm.querySelectorAll("tr");
       for (const tr of rows) {
         const hidden = tr.querySelector('input[name="attrChave[]"]');
         if (!hidden) continue;
         if ((hidden.value || "").trim().toLowerCase() === chaveDesejada.toLowerCase()) {
-          return tr.querySelector('input[name="attrValor[]"], textarea[name="attrValor[]"]');
+          return tr.querySelector(SELECTOR_VALOR);
         }
       }
       return null;
@@ -96,7 +99,7 @@
       const rows = tbodyForm.querySelectorAll("tr");
       for (const tr of rows) {
         const chaveHidden = tr.querySelector('input[name="attrChave[]"]');
-        const valorEl = tr.querySelector('input[name="attrValor[]"], textarea[name="attrValor[]"]');
+        const valorEl     = tr.querySelector(SELECTOR_VALOR);
         if (!chaveHidden || !valorEl) continue;
 
         const chave = (chaveHidden.value || "").trim();
@@ -150,8 +153,8 @@
     // Inicial
     renderAll();
 
-    // Atualizações em tempo real
-    tbodyForm.addEventListener("input", function (e) {
+    // Atualizações em tempo real (inclui select via 'change')
+    function onFormChange(e) {
       const tr = e.target.closest("tr");
       if (!tr) return;
 
@@ -183,10 +186,12 @@
           renderExtras();
           break;
       }
-    });
+    }
+
+    tbodyForm.addEventListener("input", onFormChange);
+    tbodyForm.addEventListener("change", onFormChange); // para <select>
 
     // expõe para outros arquivos chamarem após adicionar/remover linhas
     window.renderExtras = renderExtras;
   });
 })();
-

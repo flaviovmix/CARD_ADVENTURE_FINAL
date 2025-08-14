@@ -12,6 +12,11 @@
         card.setId_card(Integer.parseInt(request.getParameter("id_card")));
         cardDAO.cardUnico(card);
     }
+    
+    Integer novoOuEditar = 0;
+    if (request.getParameterMap().containsKey("novoOuEditar")) {
+        novoOuEditar = Integer.parseInt(request.getParameter("novoOuEditar"));
+    }
 %>
 
 <!DOCTYPE html>
@@ -57,11 +62,12 @@
     <div class="container py-4 mt-1">
       <h1 class="mb-4 mt-0">Novo Card</h1>
 
-     
+     <button id="btn-editar" type="reset" class="btn btn-primary w-25 me-3"  onclick="link('index.jsp')">Voltar</button>
         <div class="row g-4">
           
           <div class="col-lg-6 ">
-            <form action="salvarCard.jsp" method="get" class="needs-validation " novalidate>
+            <form action="salvarCard.jsp" method="get" class="needs-validation" novalidate>
+                <div class="<% if (novoOuEditar == 1) { %> opaco <% } %> ">
               <div class="mb-3">
                 <input type="hidden" name="id_card" value="<%=  Utilidades.nullTrim(card.getId_card()) %>">
                 <label class="form-label required" for="nome">Nome</label>
@@ -73,21 +79,23 @@
                 <label class="form-label" for="descricao">Descrição</label>
                 <textarea class="form-control" id="descricao" name="descricao" rows="1"><%=  Utilidades.nullTrim(card.getDescricao()) %></textarea>
               </div>
-              
-              <div class="mt-4 text-center">
-                <button type="submit" class="btn btn-success w-25 me-3">Salvar</button>
-                <a href="index.jsp" class="btn btn-outline-secondary w-25">Cancelar</a>
               </div>
-              
-              <div class="mt-4 text-center">
-                <button type="submit" class="btn btn-primary w-25 me-3">Editar</button>
-              </div>
-              
+              <% if (novoOuEditar == 0) { %>
+                    <div class="mt-4 text-center">
+                      <button type="submit" class="btn btn-success w-25 me-3">Salvar</button>
+                      <a href="index.jsp" class="btn btn-outline-secondary w-25">Cancelar</a>
+                    </div>
+              <% } %> 
+              <% if (novoOuEditar == 1) { %>         
+                    <div class="mt-4 text-center">
+                        <button id="btn-editar" type="reset" class="btn btn-primary w-25 me-3"  onclick="link('cadastroCardAtritutos.jsp?id_tarefa=<%= card.getId_card() %>&novoOuEditar=0')">Editar</button>
+                    </div>
+              <% } %> 
             </form>
               
               
               
-            <div class="container-xl opaco">
+            <div class="container-xl <% if (novoOuEditar == 0) { %> opaco <% } %>">
                 <div class="card card-selecionado">
 
                     <div class="menu-lateral-card">
@@ -192,7 +200,16 @@
 
           <!-- Coluna direita - atributos -->
           <div class="col-lg-6">
-            <form action="salvarAtributos.jsp" method="get" class="needs-validation opaco" novalidate>
+              
+            <form 
+                action="salvarAtributos.jsp" 
+                method="get" 
+                class="
+                        needs-validation 
+                        <% if (novoOuEditar == 0) { %> opaco <% } %> " 
+                        novalidate
+            >
+                
                 <input type="hidden" name="id_card" value="<%= id_card %>">
                 <div class="d-flex align-items-center justify-content-between mb-2 atributos">
                     <h5 class="m-0">Atributos</h5>
@@ -234,8 +251,22 @@
                             <input type="hidden" name="attrChave[]" value="Img" />
                           </td>
                           <td>
-                            <input type="text" class="form-control" name="attrValor[]"
-                                   placeholder="ex.: modelo.png" required value="modelo.png" />
+<!--                            <input type="text" class="form-control" name="attrValor[]"
+                                   placeholder="ex.: modelo.png" required value="modelo.png" />-->
+
+                        <select class="form-control" name="attrValor[]" required>
+                            <option value="">Selecione...</option>
+                            <option value="ino.png">ino</option>
+                            <option value="videl.png">videl</option>
+                            <option value="peach.png">peach</option>
+                            <option value="chul-li.jpg">chul-li</option>
+                            <option value="ravena.png">ravena</option>
+                            <option value="numero-18.png">numero-18</option>
+                            <option value="temari.png">temari</option>
+                            <option value="sakura.png">sakura</option>
+                            <option value="maga-negra.png">maga-negra</option>
+                        </select>
+
                           </td>
                           <td class="text-center">
                             <button type="button" class="btn btn-sm btn-outline-secondary" disabled>Remover</button>
@@ -315,7 +346,7 @@
       <script src="./assets/js/card/alterarNomeFase.js"></script>
       <script src="./assets/js/card/mostrarMenuLateralCard.js"></script>
       <script src="./assets/js/card/preencherPreviaCard.js"></script> 
-      
+      <script src="./assets/js/Utilidades.js"></script>
       
   </body>
 </html>

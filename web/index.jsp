@@ -45,7 +45,7 @@
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
               <li class="nav-item">
-                <a class="nav-link" href="cadastroCardAtritutos.jsp">Novo Registro</a>
+                <a class="nav-link" href="cadastroCardAtritutos.jsp?novoOuEditar=0">Novo Registro</a>
               </li>
               <li class="nav-item">
                 <div>
@@ -117,7 +117,7 @@
                 <div class="controle-card">
                     <a href="#"><img class="svg" src="./assets/svg/apagar.svg" alt=""></a>
                     <a href="#"><img class="svg" src="./assets/svg/compartilhar.svg" alt=""></a>
-                    <a href="cadastroCardAtritutos.jsp?id_card=<%= card.getId_card() %>"><img class="svg" src="./assets/svg/editar.svg" alt=""></a>
+                    <a href="cadastroCardAtritutos.jsp?id_card=<%= card.getId_card() %>&novoOuEditar=1"><img class="svg" src="./assets/svg/editar.svg" alt=""></a>
                     <a href="#"><img class="svg" src="./assets/svg/baixar.svg" alt=""></a>
                 </div>
 
