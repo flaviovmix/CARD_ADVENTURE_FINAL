@@ -1,3 +1,6 @@
+<%@page import="Atributos.AtributosDAO"%>
+<%@page import="Atributos.AtributosBean"%>
+<%@page import="java.util.List"%>
 <%@page import="app.Utilitarios.Utilidades"%>
 <%@page import="card.CardDAO"%>
 <%@page import="card.CardBean"%>
@@ -17,6 +20,9 @@
     if (request.getParameterMap().containsKey("novoOuEditar")) {
         novoOuEditar = Integer.parseInt(request.getParameter("novoOuEditar"));
     }
+    
+    AtributosDAO atributoDAO = new AtributosDAO();
+    List<AtributosBean> atributos = atributoDAO.listarAtributosPorCard(card.getId_card());
 %>
 
 <!DOCTYPE html>
@@ -62,6 +68,8 @@
     <div class="container py-4 mt-1">
       <h1 class="mb-4 mt-0">Novo Card</h1>
 
+      <h1><%= card.getId_card() %></h1>
+      
      <button id="btn-editar" type="reset" class="btn btn-primary w-25 me-3"  onclick="link('index.jsp')">Voltar</button>
         <div class="row g-4">
           
@@ -302,7 +310,26 @@
                             <button type="button" class="btn btn-sm btn-outline-secondary" disabled>Remover</button>
                           </td>
                         </tr>
-
+                        
+                        <%
+                          for (AtributosBean atributo : atributos) {
+                        %>
+                            <tr>
+                              <td>
+                                <input type="text" class="form-control bg-transparent text-muted"
+                                       value="<%= atributo.getChave() %>" disabled />
+                                <input type="hidden" name="attrChave[]" value="Bandeira" />
+                              </td>
+                              <td>
+                                <input type="text" class="form-control" name="attrValor[]"
+                                       placeholder="ex.: bandeira.png" required value="<%= atributo.getValor() %>" />
+                              </td>
+                              <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-outline-danger btnRemoverLinha">Remover</button>
+                              </td>
+                            </tr>
+                        <% } %>
+                        
                       </tbody>
                     </table>
 
