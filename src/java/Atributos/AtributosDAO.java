@@ -54,7 +54,7 @@ public List<AtributosBean> listarAtributosPorCard(int id_card) {
             e.printStackTrace();
         }
     }
-
+    
 
 
     public void fecharConexao() {

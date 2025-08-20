@@ -7,13 +7,13 @@
     </welcome-file-list>
     
     <servlet>
-       <servlet-name>TarefaServlet</servlet-name>
-       <servlet-class>Tarefas.TarefaServlet</servlet-class>
+       <servlet-name>CardAdventureServlet</servlet-name>
+       <servlet-class>CardAdventures.CardAdventureServlet</servlet-class>
    </servlet>
 
    <servlet-mapping>
-       <servlet-name>TarefaServlet</servlet-name>
-       <url-pattern>/listarTarefas</url-pattern>
+       <servlet-name>CardAdventureServlet</servlet-name>
+       <url-pattern>/CardAdventure</url-pattern>
    </servlet-mapping>   
    
     <resource-ref>
