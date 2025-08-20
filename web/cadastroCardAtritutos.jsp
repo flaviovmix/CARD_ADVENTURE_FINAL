@@ -88,7 +88,7 @@
               <% } %> 
               <% if (novoOuEditar == 1) { %>         
                     <div class="mt-4 text-center">
-                        <button id="btn-editar" type="reset" class="btn btn-primary w-25 me-3"  onclick="link('cadastroCardAtritutos.jsp?id_tarefa=<%= card.getId_card() %>&novoOuEditar=0')">Editar</button>
+                        <button id="btn-editar" type="reset" class="btn btn-primary w-25 me-3"  onclick="link('cadastroCardAtritutos.jsp?id_card=<%= card.getId_card() %>&novoOuEditar=0')">Editar</button>
                     </div>
               <% } %> 
             </form>
