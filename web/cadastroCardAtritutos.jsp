@@ -33,47 +33,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="./assets/css/card/card.css">
+    
     <link rel="stylesheet" href="./assets/css/card/area-info-personagem.css">
     <link rel="stylesheet" href="./assets/css/card/normalize.css">
     <link rel="stylesheet" href="./assets/css/card/responsividade.css">
+    <link rel="stylesheet" href="./assets/css/card/card.css">
 
-<style>
-    body {
-      zoom: 90%;
-    }
-    .table-attrs td input {
-      width: 100%;
-    }
-    .required::after {
-      content: " *";
-      color: #dc3545;
-    }
-
-    .atributos {
-        margin-top: -50px;
-    }
-
-    .opaco {
-        opacity: 0.4;
-        pointer-events: none;
-        user-select: none;
-        filter: grayscale(100%);
-    }
-</style>
   </head>
   <body class="bg-light">
       
     <div class="container py-4 mt-1">
-      <h1 class="mb-4 mt-0">Novo Card</h1>
-
-      <h1><%= card.getId_card() %></h1>
-      
-     <button id="btn-editar" type="reset" class="btn btn-primary w-25 me-3"  onclick="link('index.jsp')">Voltar</button>
+        <h1 class="mb-4 mt-0">Novo Card</h1>
+        
         <div class="row g-4">
-          
+        
           <div class="col-lg-6 ">
+            <button id="btn-editar" type="reset" class="btn btn-warning w-25 mb-3"  onclick="link('index.jsp')">Voltar</button>  
             <form action="salvarCard.jsp" method="get" class="needs-validation" novalidate>
                 <div class="<% if (novoOuEditar == 1) { %> opaco <% } %> ">
               <div class="mb-3">
@@ -100,8 +75,6 @@
                     </div>
               <% } %> 
             </form>
-              
-              
               
             <div class="container-xl <% if (novoOuEditar == 0) { %> opaco <% } %>">
                 <div class="card card-selecionado">
@@ -155,8 +128,11 @@
                     <div class="conteudo-card">
                       
                       <div class="area-info-personagem">
+                          
                         <div class="cabecalho">
+                            
                           <img class="bandeira" src="./assets/pixel_ai/bandeira.png" alt="">
+                          
                           <div class="are-face">
                             <img class="face" src="./assets/pixel_ai/modelo.png" alt="">
                           </div>
@@ -168,6 +144,7 @@
                             <a href="#"><img src="./assets/pixel_ai/ESTRELA_1-4.png" alt=""></a>
                             <a href="#"><img src="./assets/pixel_ai/ESTRELA_5.png" alt=""></a>
                           </div>
+                          
                         </div>
 
                         <div class="tabela">
@@ -185,10 +162,10 @@
 
                       <img class="img-principal" src="./assets/pixel_ai/modelo.png" alt="imagem da personagem" />
 
-                      <!-- Título agora só com classes -->
                       <div class="area-titulo-da-fase mostrar" data-nome="NOME">
                         <span class="area-titulo-texto">NOME</span>
                       </div>
+                      
                     </div>
 
                     <div class="area-link-fases">
@@ -210,12 +187,11 @@
           <div class="col-lg-6">
               
             <form 
-                action="salvarAtributos.jsp" 
+                action="salvarAlterarAtributos.jsp" 
                 method="get" 
                 class="
-                        needs-validation 
-                        <% if (novoOuEditar == 0) { %> opaco <% } %> " 
-                        novalidate
+                    needs-validation 
+                    <% if (novoOuEditar == 0) { %> opaco <% } %> " 
             >
                 
                 <input type="hidden" name="id_card" value="<%= id_card %>">
@@ -269,10 +245,8 @@
                             <option value="peach.png">peach</option>
                             <option value="chul-li.jpg">chul-li</option>
                             <option value="ravena.png">ravena</option>
-                            <option value="numero-18.png">numero-18</option>
-                            <option value="temari.png">temari</option>
                             <option value="sakura.png">sakura</option>
-                            <option value="maga-negra.png">maga-negra</option>
+                            <option value="hinata.png">hinata</option>
                         </select>
 
                           </td>

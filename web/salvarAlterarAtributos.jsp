@@ -18,7 +18,7 @@
                 atributo.setFk_card(idCard);
                 atributo.setChave(chave);
                 atributo.setValor(valor);
-
+                
                 dao.adicionarAtributos(atributo);
             }
         }

@@ -1,3 +1,25 @@
+body {
+  zoom: 90%;
+}
+.table-attrs td input {
+  width: 100%;
+}
+.required::after {
+  content: " *";
+  color: #dc3545;
+}
+
+.atributos {
+    margin-top: -50px;
+}
+
+.opaco {
+    opacity: 0.4;
+    pointer-events: none;
+    user-select: none;
+    filter: grayscale(100%);
+}
+
 .container-xl {
     display: flex;
     flex-wrap: wrap;

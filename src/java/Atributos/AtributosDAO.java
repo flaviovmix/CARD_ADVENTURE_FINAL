@@ -55,6 +55,9 @@ public List<AtributosBean> listarAtributosPorCard(int id_card) {
         }
     }
     
+    public void alterarAtributos(AtributosBean atributo) {
+
+    }
 
 
     public void fecharConexao() {
